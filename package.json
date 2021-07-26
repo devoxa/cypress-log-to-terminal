@@ -1,0 +1,36 @@
+{
+  "name": "@devoxa/cypress-log-to-terminal",
+  "description": "Output messages to the terminal during headless Cypress runs",
+  "version": "0.0.0",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/devoxa/cypress-log-to-terminal"
+  },
+  "scripts": {
+    "test": "cypress run --quiet > test-output.log && node integration-test.js",
+    "format": "prettier --ignore-path='.gitignore' --list-different --write .",
+    "format:check": "prettier --ignore-path='.gitignore' --check .",
+    "lint": "eslint --ignore-path='.gitignore' '{src,tests}/**/*.ts'",
+    "build": "rm -rf dist/ && tsc && cp ./dist/plugin.d.ts ./dist/command.d.ts .",
+    "preversion": "yarn build"
+  },
+  "eslintConfig": {
+    "extends": "@devoxa"
+  },
+  "prettier": "@devoxa/prettier-config",
+  "peerDependencies": {
+    "cypress": "^6.8.0 || ^7.0.0 || ^8.0.0"
+  },
+  "devDependencies": {
+    "@devoxa/eslint-config": "2.0.5",
+    "@devoxa/prettier-config": "1.0.0",
+    "@types/node": "16.0.0",
+    "cypress": "8.0.0",
+    "eslint": "7.31.0",
+    "prettier": "2.3.2",
+    "typescript": "4.3.5"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
